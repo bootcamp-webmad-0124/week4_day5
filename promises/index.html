@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        const directions = [
+            "Starting point: Ironhack Miami",
+            "↑ Head east on SW 8th St/Carlos Arboleya toward SW 1st Avenue",
+            "➔ Turn right onto S Miami Ave",
+            "* Chipotle Mexican Grill 891 S Miami Ave, Miami"
+        ];
+
+
+
+        function obtainDirections(step) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    console.log(directions[step]);
+
+                    if (!directions[step]) reject("Instructions not found.")
+                    else resolve('PROMESA RESUELTA');
+                }, 1000);
+
+            })
+        };
+
+
+
+
+
+        obtainDirections(0)
+            .then(value => {
+                console.log('La promesa retorna:', value)
+                return obtainDirections(1)
+            })
+            .then(value => {
+                console.log('La promesa retorna:', value)
+                return obtainDirections(2)
+            })
+            .then(value => {
+                console.log('La promesa retorna:', value)
+                return obtainDirections(3)
+            })
+            .then(() => console.log("You arrived at your destination!"))
+            .catch((err) => console.log(err))
+            .finally((err) => console.log('ESTO SIEMPRE SALDRÁ'));
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        const directions = [
+            "Starting point: Ironhack Miami",
+            "↑ Head east on SW 8th St/Carlos Arboleya toward SW 1st Avenue",
+            "➔ Turn right onto S Miami Ave",
+            "* Chipotle Mexican Grill 891 S Miami Ave, Miami"
+        ];
+
+
+
+        function getDirections(step, callback) {
+            console.log(directions[step]);
+
+            if (!directions[step]) {
+                console.error("Instructions not found.");
+            } else {
+                callback();
+            }
+        }
+
+
+
+
+        // Callbacks in sequence: CALLBACK HELL
+        getDirections(0, () => {
+            getDirections(1, () => {
+                getDirections(2, () => {
+                    getDirections(3, () => {
+
+                        console.log("You arrived at your destination!");
+                        // getDirections(4, () => {}, (err) => console.log(err) ) ;
+                    }, (err) => console.log(err));
+                }, (err) => console.log(err));
+            }, (err) => console.log(err));
+        }, (err) => console.log(err));
+
+
+    </script>
+</body>
+
+</html>
